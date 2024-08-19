@@ -1,6 +1,8 @@
 
 # Kubernetes
 
+<img src="https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png" width="100">
+
 ## Installing the Kubeadm on a local ubuntu machine
 
 This guide provides step-by-step instructions to install and configure a Kubernetes cluster using Kubeadm on Ubuntu.
