@@ -95,8 +95,22 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Download and modify the Calico configuration
-curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/custom-resources.yaml
-sed -i 's/cidr: 192.168.0.0\/16/cidr: 10.10.0.0\/16/' custom-resources.yaml
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/calico.yaml -O
+
+sudo sed -i 's/# - name: CALICO_IPV4POOL_CIDR/- name: CALICO_IPV4POOL_CIDR/' calico.yaml
+sudo sed -i 's|#   value: "192.168.0.0/16"|  value: "10.10.0.0/16"|' calico.yaml
 
 # Apply the Calico configuration
-kubectl apply -f custom-resources.yaml
+kubectl apply -f calico.yaml
+
+# Get the cluster-info
+kubectl cluster-info
+
+# Get the node-info
+kubectl get nodes
+
+# Check the Kubernetes pods 
+kubectl get pods -n kube-system
+
+
+
