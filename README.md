@@ -26,11 +26,35 @@ Install on master machine
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Manojkumar1709/Install-Kubernetes/master/master.sh | sudo bash
 ```
+
+or 
+
+```bash
+git clone https://github.com/Manojkumar1709/Install-Kubernetes.git && cd Install-Kubernetes
+```
+
+```bash
+chmod +x master.sh
+sudo ./master.sh
+```
+
 Install on node machine
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Manojkumar1709/Install-Kubernetes/master/node.sh | sudo bash
 ```
+
+or
+
+```bash
+git clone https://github.com/Manojkumar1709/Install-Kubernetes.git && cd Install-Kubernetes
+```
+
+```bash
+chmod +x node.sh
+sudo ./node.sh
+```
+
 
 After Installing kubeadm on both master and worker node machine print the join command master machine
 
