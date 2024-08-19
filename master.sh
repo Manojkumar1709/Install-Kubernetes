@@ -84,3 +84,19 @@ sudo apt-get install -y kubelet kubeadm kubectl
 
 # Prevent these packages from being automatically updated to avoid potential compatibility issues
 sudo apt-mark hold kubelet kubeadm kubectl
+
+
+# Initialize Kubernetes with the custom Pod CIDR
+sudo kubeadm init --pod-network-cidr=10.10.0.0/16
+
+# Set up kubeconfig for the current user
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# Download and modify the Calico configuration
+curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/custom-resources.yaml
+sed -i 's/cidr: 192.168.0.0\/16/cidr: 10.10.0.0\/16/' custom-resources.yaml
+
+# Apply the Calico configuration
+kubectl apply -f custom-resources.yaml
