@@ -38,7 +38,7 @@ EOF
 sudo sysctl --system
 
 # Install dependencies for adding new repositories and downloading packages over HTTPS
-sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates gpg
 
 # Add Docker's official GPG key to the system keyring for package verification
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
@@ -66,9 +66,6 @@ sudo systemctl enable containerd
 
 # Update the package repositories again to ensure the latest information is available
 sudo apt-get update
-
-# Install dependencies for adding new repositories and downloading Kubernetes packages over HTTPS
-sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 
 # Add the Kubernetes official GPG key to the system keyring for package verification
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
