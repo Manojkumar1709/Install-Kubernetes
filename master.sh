@@ -87,7 +87,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 
 # Initialize Kubernetes with the custom Pod CIDR
-sudo kubeadm init --pod-network-cidr=10.10.0.0/16
+sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --ignore-preflight-errors=all
 
 # Set up kubeconfig for the current user
 mkdir -p $HOME/.kube
