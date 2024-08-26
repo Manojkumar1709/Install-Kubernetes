@@ -1,5 +1,5 @@
 
-# Kubernetes
+# Kubernetes 
 
 <img src="https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png" width="100">
 
@@ -71,5 +71,21 @@ kubeadm join <master-node-ip>:<port> --token <token> --discovery-token-ca-cert-h
 ```
 
 
+### Setup LoadBalancer for Kubernetes Cluster
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Manojkumar1709/Install-Kubernetes/master/load-balancer.sh | sudo bash
+```
+
+or
+
+```bash
+git clone https://github.com/Manojkumar1709/Install-Kubernetes.git && cd Install-Kubernetes
+```
+
+```bash
+chmod +x load-balancer.sh
+sudo ./load-balancer.sh
+```
 
     
