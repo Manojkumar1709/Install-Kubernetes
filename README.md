@@ -88,4 +88,21 @@ chmod +x load-balancer.sh
 sudo ./load-balancer.sh
 ```
 
+### Install Prometheus-Grafana Monitoring Tool
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Manojkumar1709/Install-Kubernetes/master/prometheus-grafana.sh | sudo bash
+```
+
+or
+
+```bash
+git clone https://github.com/Manojkumar1709/Install-Kubernetes.git && cd Install-Kubernetes
+```
+
+```bash
+chmod +x prometheus-grafana.sh
+sudo ./prometheus-grafana.sh
+```
+
     
