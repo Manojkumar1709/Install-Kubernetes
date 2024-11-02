@@ -91,14 +91,8 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-# Download and modify the Calico configuration
-curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/calico.yaml -O
-
-sudo sed -i 's/# - name: CALICO_IPV4POOL_CIDR/- name: CALICO_IPV4POOL_CIDR/' calico.yaml
-sudo sed -i 's|#   value: "192.168.0.0/16"|  value: "10.10.0.0/16"|' calico.yaml
-
-# Apply the Calico configuration
-kubectl apply -f calico.yaml
+# Download and modify the kube-router configuration
+curl -sSL https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml | kubectl apply -f -
 
 # Get the cluster-info
 kubectl cluster-info
