@@ -22,10 +22,6 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 echo "Waiting for Grafana to be ready..."
 kubectl wait --for=condition=available --timeout=300s deployment/prometheus-grafana
 
-# Forward Grafana port
-echo "Port-forwarding Grafana to localhost:3000..."
-kubectl port-forward deployment/prometheus-grafana 3000:3000 &
-
 # Output Grafana credentials
 echo "Grafana is accessible at http://localhost:3000"
 echo "Default username: admin"
