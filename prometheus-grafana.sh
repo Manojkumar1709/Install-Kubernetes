@@ -22,6 +22,10 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 echo "Waiting for Grafana to be ready..."
 kubectl wait --for=condition=available --timeout=300s deployment/prometheus-grafana
 
+# Enable Grafana to be accessible via NodePort
+echo "Enabling Grafana to be accessible via NodePort..."
+kubectl patch svc prometheus-grafana -n <namespace> -p '{"spec": {"type": "NodePort"}}'
+
 # Output Grafana credentials
 echo "Grafana is accessible at http://localhost:3000"
 echo "Default username: admin"
